@@ -29,18 +29,19 @@ import java.util.List;
 public class ParadigmDemo {
     public static void main(String[] args) throws Exception{
 
-        // 泛型方法
+        //test1();
+        // 通配符
         List<String> listString = new ArrayList<String>();
         listString.add("hello");
-        test5(listString);
+        test4(listString);
         List<Integer> listInteger = new ArrayList<Integer>();
         listInteger.add(111);
-        test5(listInteger);
+        test4(listInteger);
 
     }
 
     /**
-     * 测试泛型类，new多个实例，内存中类型
+     * 测试泛型类，new多个实例，内存中类型Class是一个
      *      结果：泛型类在内存中只存在一个基础类型 Class
      *      原因：在于Java中的泛型这一概念提出的目的，
      *            导致其只是作用于代码编译阶段，在编译过程中，对于正确检验泛型结果后，
@@ -77,21 +78,12 @@ public class ParadigmDemo {
         System.out.println(age.getData());
     }
 
-
-    private static void test4() throws Exception{
-        UnBounded<?> age = new UnBounded(777);
-        //Bounded<Integer> age = new Bounded<Integer>(712);
-        age.getClass().getMethod("setData",Object.class).invoke(age,"hello");
-        // 打印信息为“hello”  证明泛型擦除后只剩原始类型
-        System.out.println(age.getData());
-    }
-
     /**
      * 泛型方法（通配符）
      * @param list
      * @throws Exception
      */
-    private static void test5(List<?> list) throws Exception{
+    private static void test4(List<?> list) throws Exception{
         for(Object o:list){
             System.out.println(o);
         }
